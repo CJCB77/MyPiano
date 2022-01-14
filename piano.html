@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Johnny's Piano</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  
+  <h2>Toca el piano!</h2>
+
+  <!-- <section class="playbtns">
+    <button>Listen</button>
+    <button><img src="imgs/play.svg" class="play-img"></button>
+  </section> -->
+
+  <section class="piano">
+    <header>
+      <img src="imgs/music-notes.png" class="piano-logo" alt="">
+    </header>
+    <article>
+      <div class="left-part"></div>
+      <div class="key" data-key="q" id="C1">
+        <p>C4</p>
+        <button>Q</button>
+      </div>
+      <div class="key" data-key="w" id="D1">
+        <p>D4</p>
+        <button>W</button>
+      </div>
+      <div class="key" data-key="e" id="E1">
+        <p>E4</p>
+        <button>E</button>
+      </div>
+      <div class="key" data-key="r" id="F1">
+        <p>F4</p>
+        <button>R</button>
+      </div>
+      <div class="key" data-key="t"id="G1">
+        <p>G4</p>
+        <button>T</button>
+      </div>
+      <div class="key" data-key="y" id="A1">
+        <p>A4</p>
+        <button>Y</button>
+      </div>
+      <div class="key" data-key="u"id="B1">
+        <p>B4</p>
+        <button>U</button>
+      </div>
+      <div class="key" data-key="i"id="C2">
+        <p>C5</p>
+        <button>I</button>
+      </div>
+      <div class="right-part"></div>
+    </article>
+
+  </section>
+
+
+  <audio src="notes/c4.wav" data-key="q"></audio>
+  <audio src="notes/d4.mp3" data-key="w"></audio>
+  <audio src="notes/e4.mp3" data-key="e"></audio>
+  <audio src="notes/f4.mp3" data-key="r"></audio>
+  <audio src="notes/g4.mp3" data-key="t"></audio>
+  <audio src="notes/a4.mp3" data-key="y"></audio>
+  <audio src="notes/b4.mp3" data-key="u"></audio>
+  <audio src="notes/c5.mp3" data-key="i"></audio>
+  
+  
+  <script src="piano.js"></script>
+</body>
+</html>

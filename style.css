@@ -1,0 +1,123 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --dark-purple:#6867AC;
+  --purple:#A267AC;
+  --light-purple:#CE7BB0;
+  --bone:#FAEEE7;
+  --bone-light: #faeee7da;
+  --white:#fff;
+  --black:#000;
+  --grey:#EFEFEF;
+}
+html {
+  font-size: 10px;
+}
+
+body {
+  font-family: 'Oswald', sans-serif;
+  background-color: var(--purple);
+  height: 100vh;
+  text-align: center;
+}
+
+h2{
+  font-size: 5rem;
+  color: var(--bone);
+  padding-top: 5rem;
+  font-weight: 700;
+}
+
+.piano {
+  height: 50vh;
+  width: 85%;
+  margin: 5rem auto;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.piano-logo {
+  height: 8rem;
+  margin-top: 1.2rem;
+}
+
+header {
+  height: 35%;
+  background-color: var(--dark-purple);
+  border-radius: 1rem 1rem 0 0;
+
+}
+
+article {
+  height: 65%;
+  display: grid;
+  grid-template-columns: [left-gutter] 1fr [keys] repeat(8,1fr) [right-gutter] 1fr;
+}
+
+
+.left-part{
+  background-color: var(--dark-purple);
+  border-radius: 0 0 0 1rem;
+}
+
+.right-part{
+  background-color: var(--dark-purple);
+  border-radius: 0 0 1rem 0;
+}
+
+.key{
+  background-color: var(--bone);
+  border-right: 2px solid var(--dark-purple);
+  cursor: pointer;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.3s ease-in;
+}
+
+.key-pressed {
+  background-color: var(--bone-light);
+}
+
+.key p{
+  color: var(--dark-purple);
+  font-size: 2.4rem;
+  font-weight: 300;
+}
+
+.key button {
+  height: 5rem;
+  width: 7rem;
+  margin-bottom: 2rem;
+  border: 1px solid var(--dark-purple);
+  border-radius: 1rem;
+  cursor: pointer;
+  color:var(--dark-purple);
+
+
+}
+
+.playbtns {
+  margin-top: 3rem;
+  display: flex;
+  justify-content: center;
+}
+
+.playbtns button {
+  margin: 0 1rem;
+  border: 1px solid var(--dark-purple);
+  color:var(--dark-purple);
+  height: 6rem;
+  width: 7rem;
+}
+
+.play-img {
+  height: 4rem;
+}
