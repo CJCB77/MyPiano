@@ -18,9 +18,12 @@ const c4_sound = new Audio("./notes/c4.wav")
 //Notes pressed list
 let pressed_keys = []
 
+//Our functions
 const repeat_pattern = (e) => {
     pressed_keys.push(e.key)
 }
+
+
 
 listenBtn.addEventListener("click", () => {
     document.addEventListener("keyup", repeat_pattern)
@@ -28,8 +31,19 @@ listenBtn.addEventListener("click", () => {
 
 play.addEventListener("click", () => {
     document.removeEventListener('keyup', repeat_pattern)
-    pressed_keys.forEach((key) =>{
-        console.log(key)
+    pressed_keys.forEach((key, i) =>{ 
+        setTimeout(() => {
+            const audio = document.querySelector(`audio[data-key="${key}"]`)
+            const note = document.querySelector(`div[data-key="${key}"]`)
+            if(!audio) return;
+            audio.currentTime = 0
+            audio.play()
+            note.classList.add("key-pressed")
+            setTimeout(() => {
+            note.classList.remove("key-pressed")
+            }, 250)
+
+        }, i * 700) 
     })
     pressed_keys = []
 })
