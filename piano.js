@@ -8,8 +8,32 @@ const a1 = document.getElementById("A1")
 const b1 = document.getElementById("B1")
 const c2 = document.getElementById("C2")
 
+//Btns
+const listenBtn = document.getElementById("listen")
+const play = document.getElementById("play")
+
 //Our notes
 const c4_sound = new Audio("./notes/c4.wav")
+
+//Notes pressed list
+let pressed_keys = []
+
+const repeat_pattern = (e) => {
+    pressed_keys.push(e.key)
+}
+
+listenBtn.addEventListener("click", () => {
+    document.addEventListener("keyup", repeat_pattern)
+})
+
+play.addEventListener("click", () => {
+    document.removeEventListener('keyup', repeat_pattern)
+    pressed_keys.forEach((key) =>{
+        console.log(key)
+    })
+    pressed_keys = []
+})
+
 
 document.addEventListener("keyup", (e) => {
     const audio = document.querySelector(`audio[data-key="${e.key}"]`)
