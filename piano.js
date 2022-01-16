@@ -11,6 +11,7 @@ const c2 = document.getElementById("C2")
 //Btns
 const listenBtn = document.getElementById("listen")
 const play = document.getElementById("play")
+const message = document.getElementById("message")
 
 //Our notes
 const c4_sound = new Audio("./notes/c4.wav")
@@ -36,10 +37,14 @@ function sleep(milisec) {
 
 listenBtn.addEventListener("click", () => {
     document.addEventListener("keyup", get_pattern)
+    message.innerText = "Escuchando..."
+    message.style.visibility="visible"
+    
 })
 
 play.addEventListener("click", () => {
     document.removeEventListener('keyup', get_pattern)
+    message.innerText = "Tocando..."
     async function playKey() {
         let time_elapsed = 0
         for (let [i,key] of pressed_keys.entries()){
@@ -59,6 +64,7 @@ play.addEventListener("click", () => {
 
         }
         pressed_keys = []
+        message.style.visibility="hidden"
     }
     playKey()
 
