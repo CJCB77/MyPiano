@@ -19,22 +19,36 @@ const c4_sound = new Audio("./notes/c4.wav")
 let pressed_keys = []
 
 //Our functions
-const repeat_pattern = (e) => {
-    pressed_keys.push(e.key)
+const get_pattern = (e) => {
+    let pressed_key = {name:e.key, time:Date.now()}
+    pressed_keys.push(pressed_key)
+}
+
+function sleep(milisec) {
+    return new Promise(resolve => {
+        setTimeout(() => {
+            resolve('')
+        }, milisec);
+    })
 }
 
 
 
 listenBtn.addEventListener("click", () => {
-    document.addEventListener("keyup", repeat_pattern)
+    document.addEventListener("keyup", get_pattern)
 })
 
 play.addEventListener("click", () => {
-    document.removeEventListener('keyup', repeat_pattern)
-    pressed_keys.forEach((key, i) =>{ 
-        setTimeout(() => {
-            const audio = document.querySelector(`audio[data-key="${key}"]`)
-            const note = document.querySelector(`div[data-key="${key}"]`)
+    document.removeEventListener('keyup', get_pattern)
+    async function playKey() {
+        let time_elapsed = 0
+        for (let [i,key] of pressed_keys.entries()){
+            if(pressed_keys[i-1]){
+                time_elapsed = key.time - pressed_keys[i-1].time
+            }
+            await sleep(time_elapsed)
+            const audio = document.querySelector(`audio[data-key="${key.name}"]`)
+            const note = document.querySelector(`div[data-key="${key.name}"]`)
             if(!audio) return;
             audio.currentTime = 0
             audio.play()
@@ -43,9 +57,11 @@ play.addEventListener("click", () => {
             note.classList.remove("key-pressed")
             }, 250)
 
-        }, i * 700) 
-    })
-    pressed_keys = []
+        }
+        pressed_keys = []
+    }
+    playKey()
+
 })
 
 
